@@ -52,6 +52,10 @@ public class Component {
         );
     }
 
+    public boolean cancelOrder(String orderId) throws IOException {
+        return tradeService.cancelOrder(orderId);
+    }
+
     public OpenOrders getOpenOrders() throws IOException {
         return tradeService.getOpenOrders();
     }

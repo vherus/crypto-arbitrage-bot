@@ -16,6 +16,7 @@ import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamCurrencyPa
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.List;
 
 public class Component {
@@ -54,6 +55,10 @@ public class Component {
 
     public boolean cancelOrder(String orderId) throws IOException {
         return tradeService.cancelOrder(orderId);
+    }
+
+    public Order getOrder(String id) throws IOException {
+        return tradeService.getOrder(id).iterator().next();
     }
 
     public OpenOrders getOpenOrders() throws IOException {

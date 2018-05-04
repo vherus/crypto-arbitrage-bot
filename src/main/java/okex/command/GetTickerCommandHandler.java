@@ -1,10 +1,9 @@
-package bittrex.command;
+package okex.command;
 
-import bittrex.Component;
 import command.Command;
 import command.CommandHandler;
-import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
+import okex.Component;
 import org.knowm.xchange.dto.marketdata.Ticker;
 
 public class GetTickerCommandHandler implements CommandHandler {
@@ -19,11 +18,7 @@ public class GetTickerCommandHandler implements CommandHandler {
         throw new IncompatibleCommandException(command, this);
     }
 
-    public Ticker handle(GetTickerCommand command) throws CommandExecutionException {
-        try {
-            return component.getTicker(command.getCurrencyPair());
-        } catch (Throwable e) {
-            throw new CommandExecutionException(command, e);
-        }
+    public Ticker handle(GetTickerCommand command) {
+        return component.getTicker(command.getCurrencyPair());
     }
 }

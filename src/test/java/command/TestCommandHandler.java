@@ -4,10 +4,6 @@ import command.exception.IncompatibleCommandException;
 
 public class TestCommandHandler implements CommandHandler {
     public void handle(Command command) throws IncompatibleCommandException {
-        if (command instanceof TestCommand) {
-            handle(command);
-        }
-
         throw new IncompatibleCommandException(command, this);
     }
 

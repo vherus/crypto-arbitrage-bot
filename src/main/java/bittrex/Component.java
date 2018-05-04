@@ -6,6 +6,7 @@ import org.knowm.xchange.bittrex.BittrexExchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.FundingRecord;
+import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
@@ -55,6 +56,10 @@ public class Component {
 
     public boolean cancelOrder(String orderId) throws IOException {
         return tradeService.cancelOrder(orderId);
+    }
+
+    public OrderBook getOrderBook(CurrencyPair currencyPair) throws IOException {
+        return marketDataService.getOrderBook(currencyPair);
     }
 
     public Order getOrder(String id) throws IOException {

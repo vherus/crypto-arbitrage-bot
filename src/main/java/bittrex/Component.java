@@ -35,4 +35,13 @@ public class Component {
                     .build()
         );
     }
+
+    public String placeSellOrder(CurrencyPair currencyPair, BigDecimal limitPrice, BigDecimal originalAmount) throws IOException {
+        return tradeService.placeLimitOrder(
+                new LimitOrder.Builder(Order.OrderType.ASK, currencyPair)
+                    .limitPrice(limitPrice)
+                    .originalAmount(originalAmount)
+                    .build()
+        );
+    }
 }

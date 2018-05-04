@@ -1,7 +1,8 @@
 package command;
 
+import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
 
 public interface CommandHandler {
-    void handle(Command command) throws IncompatibleCommandException;
+    Object handle(Command command) throws IncompatibleCommandException, CommandExecutionException;
 }

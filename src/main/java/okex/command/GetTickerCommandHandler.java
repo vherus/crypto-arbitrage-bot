@@ -14,11 +14,15 @@ public class GetTickerCommandHandler implements CommandHandler {
     }
 
     @Override
-    public void handle(Command command) throws IncompatibleCommandException {
+    public Object handle(Command command) throws IncompatibleCommandException {
+        if (command instanceof GetTickerCommand) {
+            return handle((GetTickerCommand) command);
+        }
+
         throw new IncompatibleCommandException(command, this);
     }
 
-    public Ticker handle(GetTickerCommand command) {
+    private Ticker handle(GetTickerCommand command) {
         return component.getTicker(command.getCurrencyPair());
     }
 }

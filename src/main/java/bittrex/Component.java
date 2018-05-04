@@ -7,6 +7,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.trade.LimitOrder;
+import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.trade.TradeService;
 
@@ -43,5 +44,9 @@ public class Component {
                     .originalAmount(originalAmount)
                     .build()
         );
+    }
+
+    public OpenOrders getOpenOrders() throws IOException {
+        return tradeService.getOpenOrders();
     }
 }

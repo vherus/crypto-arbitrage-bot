@@ -7,8 +7,6 @@ import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
 import org.knowm.xchange.dto.marketdata.Ticker;
 
-import java.io.IOException;
-
 public class GetTickerCommandHandler implements CommandHandler {
     private Component component;
 
@@ -23,7 +21,7 @@ public class GetTickerCommandHandler implements CommandHandler {
     public Ticker handle(GetTickerCommand command) throws CommandExecutionException {
         try {
             return component.getTicker(command.getCurrencyPair());
-        } catch (IOException e) {
+        } catch (Throwable e) {
             throw new CommandExecutionException(command, e);
         }
     }

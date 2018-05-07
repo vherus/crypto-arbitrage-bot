@@ -1,10 +1,17 @@
 package api.okex.response;
 
 import api.ApiResponse;
-import org.knowm.xchange.dto.marketdata.Ticker;
+
+import java.io.InputStream;
 
 public class GetTickerResponse implements ApiResponse {
-    public Ticker getTicker() {
-        return null;
+    private InputStream data;
+
+    public GetTickerResponse(InputStream data) {
+        this.data = data;
+    }
+
+    public InputStream getData() {
+        return data;
     }
 }

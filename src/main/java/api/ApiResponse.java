@@ -1,5 +1,7 @@
 package api;
 
-public interface ApiResponse {
+import java.io.InputStream;
 
+public interface ApiResponse {
+    InputStream getData();
 }

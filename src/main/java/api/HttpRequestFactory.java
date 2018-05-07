@@ -5,8 +5,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 
+import java.io.UnsupportedEncodingException;
+
 public class HttpRequestFactory {
-    public static HttpUriRequest makeHttpRequest(String baseUri, ApiRequest request) throws RequestNotSupportedException {
+    public static HttpUriRequest makeHttpRequest(String baseUri, ApiRequest request) throws RequestNotSupportedException, UnsupportedEncodingException {
         String url = baseUri + request.getUrl();
 
         switch (request.getMethod()) {
@@ -14,7 +16,13 @@ public class HttpRequestFactory {
                 return new HttpGet(url);
 
             case POST:
-                return new HttpPost(url);
+                HttpPost httpPost = new HttpPost(url);
+
+                if (request instanceof ApiPostRequest) {
+                    httpPost.setEntity(((ApiPostRequest) request).getParameters());
+                }
+
+                return httpPost;
         }
 
         throw new RequestNotSupportedException(request);

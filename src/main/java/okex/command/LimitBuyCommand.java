@@ -20,11 +20,11 @@ public class LimitBuyCommand implements Command {
         return currencyPair;
     }
 
-    public BigDecimal getPrice() {
+    BigDecimal getPrice() {
         return price;
     }
 
-    public BigDecimal getQuantity() {
+    BigDecimal getQuantity() {
         return quantity;
     }
 }

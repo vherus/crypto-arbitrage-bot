@@ -17,7 +17,6 @@ import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamCurrencyPa
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.List;
 
 public class Component {

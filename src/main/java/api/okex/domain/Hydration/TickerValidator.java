@@ -6,8 +6,8 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TickerValidator {
-    public void validate(JsonObject jsonObject) throws HydrationException {
+class TickerValidator {
+    void validate(JsonObject jsonObject) throws HydrationException {
         ArrayList<String> required = new ArrayList<String>(Arrays.asList(
                 "buy",
                 "high",

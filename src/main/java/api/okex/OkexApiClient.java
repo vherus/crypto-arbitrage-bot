@@ -5,8 +5,6 @@ import api.ApiRequest;
 import api.ApiResponse;
 import api.HttpRequestFactory;
 import api.exception.RequestNotSupportedException;
-import api.okex.response.GetTickerResponse;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.HttpClientBuilder;

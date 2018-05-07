@@ -8,7 +8,7 @@ public class TickerHydrator {
     public Ticker hydrate(JsonObject jsonObject) throws HydrationException {
         (new TickerValidator()).validate(jsonObject);
 
-        return (new Ticker.Builder())
+        return new Ticker.Builder()
                 .buy(jsonObject.get("buy").getAsBigDecimal())
                 .high(jsonObject.get("high").getAsBigDecimal())
                 .last(jsonObject.get("last").getAsBigDecimal())

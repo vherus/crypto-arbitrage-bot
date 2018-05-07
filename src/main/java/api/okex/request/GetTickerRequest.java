@@ -20,6 +20,6 @@ public class GetTickerRequest implements ApiRequest {
     }
 
     public String getUrl() {
-        return "/ticker";
+        return "/ticker.do?symbol=" + currencyPair.toString().toLowerCase();
     }
 }

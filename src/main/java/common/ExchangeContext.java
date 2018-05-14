@@ -7,7 +7,7 @@ public class ExchangeContext {
         exchangeName = exchangeClassName;
     }
 
-    public String getExchangeName() {
+    String getExchangeName() {
         return exchangeName;
     }
 }

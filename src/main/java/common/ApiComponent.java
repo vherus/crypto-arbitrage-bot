@@ -1,8 +1,7 @@
-package bittrex;
+package common;
 
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
-import org.knowm.xchange.bittrex.BittrexExchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.FundingRecord;
@@ -19,16 +18,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Component {
+public class ApiComponent implements Component {
     private MarketDataService marketDataService;
     private TradeService tradeService;
     private AccountService accountService;
 
-    public Component() {
-        Exchange bittrex = ExchangeFactory.INSTANCE.createExchange(BittrexExchange.class.getName());
-        marketDataService = bittrex.getMarketDataService();
-        tradeService = bittrex.getTradeService();
-        accountService = bittrex.getAccountService();
+    public ApiComponent(ExchangeContext context) {
+        Exchange exchange = ExchangeFactory.INSTANCE.createExchange(context.getExchangeName());
+        marketDataService = exchange.getMarketDataService();
+        tradeService = exchange.getTradeService();
+        accountService = exchange.getAccountService();
     }
 
     public Ticker getTicker(CurrencyPair currencyPair) throws IOException {
@@ -38,18 +37,18 @@ public class Component {
     public String placeBuyOrder(CurrencyPair currencyPair, BigDecimal limitPrice, BigDecimal originalAmount) throws IOException {
         return tradeService.placeLimitOrder(
                 new LimitOrder.Builder(Order.OrderType.BID, currencyPair)
-                    .limitPrice(limitPrice)
-                    .originalAmount(originalAmount)
-                    .build()
+                        .limitPrice(limitPrice)
+                        .originalAmount(originalAmount)
+                        .build()
         );
     }
 
     public String placeSellOrder(CurrencyPair currencyPair, BigDecimal limitPrice, BigDecimal originalAmount) throws IOException {
         return tradeService.placeLimitOrder(
                 new LimitOrder.Builder(Order.OrderType.ASK, currencyPair)
-                    .limitPrice(limitPrice)
-                    .originalAmount(originalAmount)
-                    .build()
+                        .limitPrice(limitPrice)
+                        .originalAmount(originalAmount)
+                        .build()
         );
     }
 

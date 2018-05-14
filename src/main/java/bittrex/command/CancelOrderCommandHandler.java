@@ -25,7 +25,7 @@ public class CancelOrderCommandHandler implements CommandHandler {
         throw new IncompatibleCommandException(command, this);
     }
 
-    public boolean handle(CancelOrderCommand command) throws CommandExecutionException {
+    public Boolean handle(CancelOrderCommand command) throws CommandExecutionException {
         try {
             return component.cancelOrder(command.getId());
         } catch (Throwable e) {

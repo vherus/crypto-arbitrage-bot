@@ -7,28 +7,28 @@ import command.exception.IncompatibleCommandException;
 import common.ApiComponent;
 import common.Component;
 import common.ExchangeContext;
-import org.knowm.xchange.dto.marketdata.Ticker;
+import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.okcoin.OkCoinExchange;
 
-public class GetTickerCommandHandler implements CommandHandler {
+public class GetOrderBookCommandHandler implements CommandHandler {
     private Component component;
 
-    public GetTickerCommandHandler() {
+    public GetOrderBookCommandHandler() {
         component = new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName()));
     }
 
     @Override
     public Object handle(Command command) throws IncompatibleCommandException, CommandExecutionException {
-        if (command instanceof GetTickerCommand) {
-            return handle((GetTickerCommand) command);
+        if (command instanceof GetOrderBookCommand) {
+            return handle((GetOrderBookCommand) command);
         }
 
         throw new IncompatibleCommandException(command, this);
     }
 
-    private Ticker handle(GetTickerCommand command) throws CommandExecutionException {
+    public OrderBook handle(GetOrderBookCommand command) throws CommandExecutionException {
         try {
-            return component.getTicker(command.getCurrencyPair());
+            return component.getOrderBook(command.getCurrencyPair());
         } catch (Throwable e) {
             throw new CommandExecutionException(command, e);
         }

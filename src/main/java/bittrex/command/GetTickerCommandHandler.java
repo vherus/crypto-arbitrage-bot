@@ -1,20 +1,19 @@
 package bittrex.command;
 
-import common.ApiComponent;
-import common.Component;
 import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ExchangeContext;
-import org.knowm.xchange.bittrex.BittrexExchange;
+import common.Component;
 import org.knowm.xchange.dto.marketdata.Ticker;
 
-public class GetTickerCommandHandler implements CommandHandler {
-    private Component component;
+import javax.inject.Named;
 
-    public GetTickerCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(BittrexExchange.class.getName()));
+public class GetTickerCommandHandler implements CommandHandler {
+    private final Component component;
+
+    public GetTickerCommandHandler(@Named("Bittrex") Component component) {
+        this.component = component;
     }
 
     @Override

@@ -4,17 +4,16 @@ import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ApiComponent;
 import common.Component;
-import common.ExchangeContext;
 import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.okcoin.OkCoinExchange;
+
+import javax.inject.Named;
 
 public class GetOpenOrdersCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public GetOpenOrdersCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName()));
+    public GetOpenOrdersCommandHandler(@Named("Okex") Component component) {
+        this.component = component;
     }
 
     @Override

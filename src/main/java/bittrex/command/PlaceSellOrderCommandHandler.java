@@ -1,19 +1,18 @@
 package bittrex.command;
 
-import common.ApiComponent;
-import common.Component;
 import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ExchangeContext;
-import org.knowm.xchange.bittrex.BittrexExchange;
+import common.Component;
+
+import javax.inject.Named;
 
 public class PlaceSellOrderCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public PlaceSellOrderCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(BittrexExchange.class.getName()));
+    public PlaceSellOrderCommandHandler(@Named("Bittrex") Component component) {
+        this.component = component;
     }
 
     @Override

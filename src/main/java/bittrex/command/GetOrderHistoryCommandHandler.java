@@ -1,22 +1,20 @@
 package bittrex.command;
 
-import common.ApiComponent;
-import common.Component;
 import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ExchangeContext;
-import org.knowm.xchange.bittrex.BittrexExchange;
+import common.Component;
 import org.knowm.xchange.dto.account.FundingRecord;
 
+import javax.inject.Named;
 import java.util.List;
 
 public class GetOrderHistoryCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public GetOrderHistoryCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(BittrexExchange.class.getName()));
+    public GetOrderHistoryCommandHandler(@Named("Bittrex") Component component) {
+        this.component = component;
     }
 
     @Override

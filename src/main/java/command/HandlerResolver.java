@@ -2,8 +2,8 @@ package command;
 
 import command.exception.HandlerResolutionException;
 
-final class HandlerResolver {
-    static CommandHandler resolveHandler(Command command) throws HandlerResolutionException, RuntimeException {
+final public class HandlerResolver {
+    public static CommandHandler resolveHandler(Command command) throws HandlerResolutionException, RuntimeException {
         String name = command.getClass().getName();
 
         try {

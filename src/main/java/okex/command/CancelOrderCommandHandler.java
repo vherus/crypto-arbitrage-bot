@@ -4,16 +4,15 @@ import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ApiComponent;
 import common.Component;
-import common.ExchangeContext;
-import org.knowm.xchange.okcoin.OkCoinExchange;
+
+import javax.inject.Named;
 
 public class CancelOrderCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public CancelOrderCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName()));
+    public CancelOrderCommandHandler(@Named("Okex") Component component) {
+        this.component = component;
     }
 
     @Override

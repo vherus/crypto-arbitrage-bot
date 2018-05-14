@@ -4,19 +4,17 @@ import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ApiComponent;
 import common.Component;
-import common.ExchangeContext;
 import org.knowm.xchange.dto.account.FundingRecord;
-import org.knowm.xchange.okcoin.OkCoinExchange;
 
+import javax.inject.Named;
 import java.util.List;
 
 public class GetOrderHistoryCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public GetOrderHistoryCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName()));
+    public GetOrderHistoryCommandHandler(@Named("Okex") Component component) {
+        this.component = component;
     }
 
     @Override

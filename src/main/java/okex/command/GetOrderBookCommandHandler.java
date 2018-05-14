@@ -4,17 +4,16 @@ import command.Command;
 import command.CommandHandler;
 import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
-import common.ApiComponent;
 import common.Component;
-import common.ExchangeContext;
 import org.knowm.xchange.dto.marketdata.OrderBook;
-import org.knowm.xchange.okcoin.OkCoinExchange;
+
+import javax.inject.Named;
 
 public class GetOrderBookCommandHandler implements CommandHandler {
-    private Component component;
+    private final Component component;
 
-    public GetOrderBookCommandHandler() {
-        component = new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName()));
+    public GetOrderBookCommandHandler(@Named("Okex") Component component) {
+        this.component = component;
     }
 
     @Override

@@ -6,11 +6,13 @@ import command.exception.CommandExecutionException;
 import command.exception.IncompatibleCommandException;
 import common.Component;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 public class PlaceBuyOrderCommandHandler implements CommandHandler {
     private final Component component;
 
+    @Inject
     public PlaceBuyOrderCommandHandler(@Named("Okex") Component component) {
         this.component = component;
     }

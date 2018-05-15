@@ -14,6 +14,6 @@ public class ComponentModule extends AbstractModule {
 
         bind(Component.class)
             .annotatedWith(Names.named("Bittrex"))
-            .toInstance(new ApiComponent(new ExchangeContext(BittrexExchange.class, "", "")));
+            .toInstance(new ApiComponent(new ExchangeContext(BittrexExchange.class, "e6cf7534e81d4ce49bc214006bae0c5a", "d54a9496685041ae973f0ba193fa250d")));
     }
 }

@@ -7,11 +7,13 @@ import command.exception.IncompatibleCommandException;
 import common.Component;
 import org.knowm.xchange.dto.trade.OpenOrders;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 public class GetOpenOrdersCommandHandler implements CommandHandler {
     private final Component component;
 
+    @Inject
     public GetOpenOrdersCommandHandler(@Named("Bittrex") Component component) {
         this.component = component;
     }

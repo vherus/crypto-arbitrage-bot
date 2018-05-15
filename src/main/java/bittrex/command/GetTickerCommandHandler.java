@@ -7,11 +7,13 @@ import command.exception.IncompatibleCommandException;
 import common.Component;
 import org.knowm.xchange.dto.marketdata.Ticker;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 public class GetTickerCommandHandler implements CommandHandler {
     private final Component component;
 
+    @Inject
     public GetTickerCommandHandler(@Named("Bittrex") Component component) {
         this.component = component;
     }

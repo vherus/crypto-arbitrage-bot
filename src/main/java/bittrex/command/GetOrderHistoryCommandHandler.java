@@ -7,12 +7,14 @@ import command.exception.IncompatibleCommandException;
 import common.Component;
 import org.knowm.xchange.dto.account.FundingRecord;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
 public class GetOrderHistoryCommandHandler implements CommandHandler {
     private final Component component;
 
+    @Inject
     public GetOrderHistoryCommandHandler(@Named("Bittrex") Component component) {
         this.component = component;
     }

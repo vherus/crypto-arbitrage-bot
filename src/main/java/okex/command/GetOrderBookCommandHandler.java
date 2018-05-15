@@ -7,11 +7,13 @@ import command.exception.IncompatibleCommandException;
 import common.Component;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 public class GetOrderBookCommandHandler implements CommandHandler {
     private final Component component;
 
+    @Inject
     public GetOrderBookCommandHandler(@Named("Okex") Component component) {
         this.component = component;
     }

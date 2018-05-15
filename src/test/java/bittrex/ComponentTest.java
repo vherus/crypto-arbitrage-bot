@@ -15,7 +15,7 @@ class ComponentTest {
 
     @Test
     void getTicker() throws IOException {
-        Component component = new ApiComponent(new ExchangeContext(BittrexExchange.class.getName()));;
+        Component component = new ApiComponent(new ExchangeContext(BittrexExchange.class, "", ""));;
         assertNotNull(component.getTicker(CurrencyPair.LTC_BTC));
     }
 }

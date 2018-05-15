@@ -1,7 +1,6 @@
 package common;
 
 import org.knowm.xchange.Exchange;
-import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.FundingRecord;
@@ -24,7 +23,7 @@ public class ApiComponent implements Component {
     private AccountService accountService;
 
     public ApiComponent(ExchangeContext context) {
-        Exchange exchange = ExchangeFactory.INSTANCE.createExchange(context.getExchangeName());
+        Exchange exchange = ExchangeFactory.make(context);
         marketDataService = exchange.getMarketDataService();
         tradeService = exchange.getTradeService();
         accountService = exchange.getAccountService();

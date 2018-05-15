@@ -10,10 +10,10 @@ public class ComponentModule extends AbstractModule {
     protected void configure() {
         bind(Component.class)
             .annotatedWith(Names.named("Okex"))
-            .toInstance(new ApiComponent(new ExchangeContext(OkCoinExchange.class.getName())));
+            .toInstance(new ApiComponent(new ExchangeContext(OkCoinExchange.class, "", "")));
 
         bind(Component.class)
             .annotatedWith(Names.named("Bittrex"))
-            .toInstance(new ApiComponent(new ExchangeContext(BittrexExchange.class.getName())));
+            .toInstance(new ApiComponent(new ExchangeContext(BittrexExchange.class, "", "")));
     }
 }

@@ -22,7 +22,7 @@ public class ApiComponent implements Component {
     private TradeService tradeService;
     private AccountService accountService;
 
-    public ApiComponent(ExchangeContext context) {
+    ApiComponent(ExchangeContext context) {
         Exchange exchange = ExchangeFactory.make(context);
         marketDataService = exchange.getMarketDataService();
         tradeService = exchange.getTradeService();

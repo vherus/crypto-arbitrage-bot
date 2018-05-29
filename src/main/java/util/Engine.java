@@ -32,7 +32,7 @@ final public class Engine {
         LimitOrder bittrexTop = bittrexBook.get(0);
         LimitOrder okexTop = okexBook.get(0);
 
-        BigDecimal fee = new BigDecimal(1 - (100 / transactionPercentage));
+        BigDecimal fee = new BigDecimal(1 - (transactionPercentage / 100));
 
         String okexOrderId = (String) commandBus.dispatch(
                 new okex.command.PlaceBuyOrderCommand(CurrencyPair.LTC_BTC, bittrexTop.getLimitPrice().multiply(fee), bittrexTop.getOriginalAmount())

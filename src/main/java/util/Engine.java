@@ -18,10 +18,10 @@ final public class Engine {
         this.commandBus = commandBus;
     }
 
-    public void run() throws IncompatibleCommandException, HandlerResolutionException, CommandExecutionException {
+    public void run(Integer transactionPercentage) throws IncompatibleCommandException, HandlerResolutionException, CommandExecutionException {
         ArrayList<LimitOrder> orderBook = OrderBookMerger.merge(
-            ((OrderBook) commandBus.dispatch(new okex.command.GetOrderBookCommand(CurrencyPair.LTC_BTC))).getAsks(),
-            ((OrderBook) commandBus.dispatch(new bittrex.command.GetOrderBookCommand(CurrencyPair.LTC_BTC))).getAsks()
+            ((OrderBook) commandBus.dispatch(new okex.command.GetOrderBookCommand(CurrencyPair.LTC_BTC))).getBids(),
+            ((OrderBook) commandBus.dispatch(new bittrex.command.GetOrderBookCommand(CurrencyPair.LTC_BTC))).getBids()
         );
     }
 }

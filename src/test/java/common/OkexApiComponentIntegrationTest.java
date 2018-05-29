@@ -10,6 +10,7 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.okcoin.OkCoinExchange;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +38,21 @@ class OkexApiComponentIntegrationTest {
 
         for (Order order : orders) {
             assertEquals(CurrencyPair.LTC_BTC, order.getCurrencyPair());
+        }
+    }
+
+    @Test
+    void orderBooksAreOrderedByLowestPriceFirst() throws IOException {
+        OrderBook book = component.getOrderBook(CurrencyPair.LTC_BTC);
+        List<LimitOrder> asks = book.getAsks();
+        Collections.reverse(asks);
+
+        LimitOrder previous = asks.get(0);
+        assertNotNull(previous);
+
+        for (LimitOrder ask : asks.subList(1, asks.size())) {
+            assertTrue(ask.getLimitPrice().compareTo(previous.getLimitPrice()) < 0);
+            previous = ask;
         }
     }
 }
